@@ -1,7 +1,15 @@
 .welcomePage{
-    padding-top: 10%;
-    padding-bottom: 10%;
+    padding-top: 15%;
+    padding-bottom: 25%;
+    text-align: left;
     color: white;
+    background-image: url("../assets/MK-logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 550px;
+
+
+
 }
 
 .thankYouPage{

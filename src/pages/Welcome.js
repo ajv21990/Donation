@@ -13,10 +13,10 @@ class Welcome extends React.Component {
     }
     render() {
         return (
-            <div className="welcomePage col-md-6 ">
-                <img src={MKSVG} />
+            <div className="welcomePage  ">
+                {/* <img src={MKSVG} /> */}
                 <Spring
-                    config={{ tension: 50, friction: 90 }}
+                    config={{ tension: 90, friction: 200 }}
                     from={{ opacity: 0 }}
                     to={{ opacity: 1 }}>
                     {props => <div style={props}><h1>Welcome</h1>
