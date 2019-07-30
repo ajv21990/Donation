@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
+import { navigate } from "gatsby"
+
 
 class CheckoutForm extends Component {
     constructor(props) {
@@ -17,7 +19,7 @@ class CheckoutForm extends Component {
 
 
         if (response.ok) {
-            console.log("Good!")
+            navigate("/ThankYou/")
         }
         if (!response.ok) alert("Did not charge try again")
     }
