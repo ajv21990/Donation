@@ -1,1 +1,10 @@
-{"componentChunkName":"component---src-pages-thank-you-js","path":"/ThankYou/","webpackCompilationHash":"","result":{"pageContext":{"isCreatedByStatefulCreatePages":true}}}
+{
+    "componentChunkName": "component---src-pages-thank-you-js",
+    "path": "/ThankYou/",
+    "webpackCompilationHash": "",
+    "result": {
+        "pageContext": {
+            "isCreatedByStatefulCreatePages": true
+        }
+    }
+}

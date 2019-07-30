@@ -1,6 +1,5 @@
 import React from "react"
 import { navigate } from "gatsby"
-
 import Button from '@material-ui/core/Button'
 
 import '../stylesheets/welcomeStyle.css'
