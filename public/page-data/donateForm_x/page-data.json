@@ -1,0 +1,10 @@
+{
+    "componentChunkName": "component---src-pages-donate-form-x-js",
+    "path": "/donateForm_x/",
+    "webpackCompilationHash": "",
+    "result": {
+        "pageContext": {
+            "isCreatedByStatefulCreatePages": true
+        }
+    }
+}

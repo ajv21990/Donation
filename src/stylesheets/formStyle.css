@@ -1,0 +1,43 @@
+.FormPage{
+    background-color: #3B5063;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Form Style */
+
+.DonationForm{    
+      width:300px;
+      margin: auto;
+      color: white;
+}
+
+
+/* Header/Footer style */
+.head{
+    padding-top: 2%;
+    text-align: center;
+    color: white;
+}
+.headFoot{
+    text-align: center;
+    color: white;
+
+}
+
+/* Stripe Modal Style */
+
+.stripeModal{
+    background-color: #5BD6FE;
+    color: white ;
+    width: 500px;
+    text-align: center;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-top: 15%;
+    margin-right: auto;
+
+    
+}
