@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 
 import '../stylesheets/welcomeStyle.css'
 import { Spring } from 'react-spring/renderprops'
+import MKSVG from '../assets/MK-logo.svg'
 
 
 class Welcome extends React.Component {
@@ -13,6 +14,7 @@ class Welcome extends React.Component {
     render() {
         return (
             <div className="welcomePage col-md-6 ">
+                <img src={MKSVG} />
                 <Spring
                     config={{ tension: 50, friction: 90 }}
                     from={{ opacity: 0 }}
