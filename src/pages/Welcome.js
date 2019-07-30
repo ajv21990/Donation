@@ -1,4 +1,6 @@
 import React from "react"
+import { navigate } from "gatsby"
+
 import Button from '@material-ui/core/Button'
 
 import '../stylesheets/welcomeStyle.css'
@@ -7,7 +9,7 @@ import { Spring } from 'react-spring/renderprops'
 
 class Welcome extends React.Component {
     goToDonate = () => {
-        this.props.history.push("/donateForm")
+        navigate("/donateForm")
     }
     render() {
         return (
