@@ -4,6 +4,10 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-image: url("../assets/MK-logo.svg");
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Form Style */
