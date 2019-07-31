@@ -16,9 +16,20 @@
     padding-top: 10%;
     padding-bottom: 50%;
     color: white;
+    text-align: center;
+
+    /* background css */
     background-color: #3B5063;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-image: url("../assets/MK-logo.svg");
+    background-size: 550px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+
+    
 }
