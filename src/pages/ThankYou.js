@@ -10,7 +10,7 @@ class Welcome extends React.Component {
 
     render() {
         return (
-            <div className="thankYouPage col-md-12 ">
+            <div className="thankYouPage ">
                 <Spring
                     config={{ tension: 50, friction: 90 }}
                     from={{ opacity: 0 }}

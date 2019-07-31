@@ -10,18 +10,26 @@ class CheckoutForm extends Component {
     }
 
     async submit(ev) {
-        let { token } = await this.props.stripe.createToken({ name: "Name" })
-        let response = await fetch("/charge", {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: token.id
-        });
-
-
-        if (response.ok) {
-            navigate("/ThankYou/")
+        try {
+            let { token } = await this.props.stripe.createToken({ name: "Name" })
+            let response = await fetch("/charge", {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: token.id
+            });
+            if (response.ok) {
+                navigate("/ThankYou/")
+            }
+            if (!response.ok) alert("Did not charge try again")
         }
-        if (!response.ok) alert("Did not charge try again")
+        catch{
+            navigate("/404.html")
+           
+        }
+
+
+
+
     }
 
 

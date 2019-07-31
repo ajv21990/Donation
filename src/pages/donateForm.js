@@ -98,139 +98,146 @@ export default class ContactForm extends React.Component {
             <div className="FormPage">
                 <Header />
                 <hr />
-                <div className="DonationForm">
+                <div className="DonationForm row">
+                    <div className="col-sm-3 offset-md-2 offset-sm-0">
+                        <TextField
+                            id="DonationID"
+                            fullWidth="true"
+                            label="Donation ID"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.donationID}
+                            onChange={event => this.setState({ donationID: event.target.value })}
+                        />
+                        <TextField
+                            id="FirstName"
+                            fullWidth="true"
 
-                    <TextField
-                        id="DonationID"
-                        fullWidth="true"
-                        label="Donation ID"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.donationID}
-                        onChange={event => this.setState({ donationID: event.target.value })}
-                    />
-                    <TextField
-                        id="FirstName"
-                        fullWidth="true"
+                            label="First Name"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.fName}
+                            onChange={event => this.setState({ fName: event.target.value })}
+                        />
+                        <TextField
+                            id="LastName"
+                            fullWidth="true"
 
-                        label="First Name"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.fName}
-                        onChange={event => this.setState({ fName: event.target.value })}
-                    />
-                    <TextField
-                        id="LastName"
-                        fullWidth="true"
+                            label="Last Name"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.lName}
+                            onChange={event => this.setState({ lName: event.target.value })}
+                        />
 
-                        label="Last Name"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.lName}
-                        onChange={event => this.setState({ lName: event.target.value })}
-                    />
-                    <TextField
-                        fullWidth="true"
-                        type="email"
-                        id="Email"
-                        label="Email"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.email}
-                        onChange={event => this.setState({ email: event.target.value })}
-                    />
-                    <TextField
-                        id="Address"
-                        fullWidth="true"
+                        <TextField
+                            fullWidth="true"
+                            type="email"
+                            id="Email"
+                            label="Email"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.email}
+                            onChange={event => this.setState({ email: event.target.value })}
+                        />
+                    </div>
+                    <div className="col-sm-3">
+                        <TextField
+                            id="Address"
+                            fullWidth="true"
 
-                        label="Address"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.address}
-                        onChange={event => this.setState({ address: event.target.value })}
-                    />
-                    <TextField
-                        id="Apt"
-                        fullWidth="true"
+                            label="Address"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.address}
+                            onChange={event => this.setState({ address: event.target.value })}
+                        />
+                        <TextField
+                            id="Apt"
+                            fullWidth="true"
 
-                        label="Apt#"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.apt}
-                        onChange={event => this.setState({ apt: event.target.value })}
-                    />
-                    <TextField
-                        id="City"
-                        fullWidth="true"
+                            label="Apt#"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.apt}
+                            onChange={event => this.setState({ apt: event.target.value })}
+                        />
+                        <TextField
+                            id="City"
+                            fullWidth="true"
 
-                        label="City"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.city}
-                        onChange={event => this.setState({ city: event.target.value })}
-                    />
-                    <TextField
-                        id="State"
-                        fullWidth="true"
+                            label="City"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.city}
+                            onChange={event => this.setState({ city: event.target.value })}
+                        />
+                        <TextField
+                            id="State"
+                            fullWidth="true"
 
-                        label="State"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.state}
-                        onChange={event => this.setState({ state: event.target.value })}
-                    />
-                    <TextField
-                        id="Zip"
-                        fullWidth="true"
+                            label="State"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.state}
+                            onChange={event => this.setState({ state: event.target.value })}
+                        />
+                        <TextField
+                            id="Zip"
+                            fullWidth="true"
 
-                        label="Zip"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.zip}
-                        onChange={event => this.setState({ zip: event.target.value })}
-                    />
-                    <TextField
-                        id="Amount"
-                        fullWidth="true"
+                            label="Zip"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.zip}
+                            onChange={event => this.setState({ zip: event.target.value })}
+                        />
+                    </div>
+                    <div className="col-sm-3">
+                        <TextField
+                            id="Amount"
+                            fullWidth="true"
 
-                        label="Amount"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.amount}
-                        onChange={event => this.setState({ amount: event.target.value })}
-                    />
+                            label="Amount"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.amount}
+                            onChange={event => this.setState({ amount: event.target.value })}
+                        />
+                        <TextField
+                            id="CardNumber"
+                            fullWidth="true"
 
+                            label="Card#"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.cardNumber}
+                            onChange={event => this.setState({ cardNumber: event.target.value })}
+                        />
+                        <TextField
+                            id="CVV"
+                            fullWidth="true"
 
-                    <TextField
-                        id="CardNumber"
-                        fullWidth="true"
+                            label="CVV"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.cvv}
+                            onChange={event => this.setState({ cvv: event.target.value })}
+                        />
+                        <TextField
+                            id="Exp"
+                            fullWidth="true"
 
-                        label="Card#"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.cardNumber}
-                        onChange={event => this.setState({ cardNumber: event.target.value })}
-                    />
-                    <TextField
-                        id="CVV"
-                        fullWidth="true"
-
-                        label="CVV"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.cvv}
-                        onChange={event => this.setState({ cvv: event.target.value })}
-                    />
-                    <TextField
-                        id="Exp"
-                        fullWidth="true"
-
-                        label="Exp"
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.exp}
-                        onChange={event => this.setState({ exp: event.target.value })}
-                    />
+                            label="Exp"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.exp}
+                            onChange={event => this.setState({ exp: event.target.value })}
+                        />
+                    </div>
+                </div>
+                <br />
+                <div className="BottomForm">
                     <FormControl variant="outlined">
                         <InputLabel >
                             Frequency
@@ -250,9 +257,10 @@ export default class ContactForm extends React.Component {
                     </FormControl>
                     <br />
                     <br />
+
                     <Button variant="contained" color="primary" onClick={this.Submit} >SUBMIT</Button>
+                    <br />
                 </div>
-                <br />
                 <hr />
 
 

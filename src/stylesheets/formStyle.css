@@ -4,17 +4,24 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-image: url("../assets/MK-logo.svg");
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Form Style */
 
 .DonationForm{    
-      width:300px;
-      margin: auto;
-      color: white;
+
+    margin: auto;
 }
 
-
+/* Bottom of the form styling */
+.BottomForm{
+    text-align: center;
+    padding-bottom: 30px;
+}
 /* Header/Footer style */
 .head{
     padding-top: 2%;
