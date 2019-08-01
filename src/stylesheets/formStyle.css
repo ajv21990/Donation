@@ -13,14 +13,21 @@
 /* Form Style */
 
 .DonationForm{    
-
+    background-color: white;
+    opacity: .5;
+    width: 75%;
     margin: auto;
+    border-radius: 25px;
+    padding: 25px;
 }
+
+
 
 /* Bottom of the form styling */
 .BottomForm{
     text-align: center;
-    padding-bottom: 30px;
+    
+    
 }
 /* Header/Footer style */
 .head{

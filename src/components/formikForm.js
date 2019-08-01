@@ -7,6 +7,7 @@ import Modal from '@material-ui/core/Modal'
 import axios from 'axios'
 import * as Yup from "yup";
 
+
 const validationSchema = Yup.object({
     donationID: Yup.number("Enter a donation ID").required("Donation ID is required"),
     fName: Yup.string("Enter a first name").required("First name is required"),
@@ -16,15 +17,16 @@ const validationSchema = Yup.object({
         .required("Email is required"),
     address: Yup.string("Enter your address")
         .required("Address is required"),
+    apt: Yup.string("Enter your apt#").notRequired(),
     city: Yup.string("Enter a city").required("City is required").max(30, "Enter a valid city"),
-    state: Yup.string("Enter a state").required("State is required").max(2, "Enter state abbrev").min(2, "Enter state abbrev"),
+    state: Yup.string("Enter a state").required("State is required").length(2, "Enter state abbrev").uppercase(),
     zip: Yup.string("Enter a zip code").required("Zip code is required").max(10, "Enter a valid zip code").min(5, "Enter a valid zip code"),
-    amount: Yup.number("Enter a dollar amount").required("Amount is required").positive(),
+    amount: Yup.number("Enter a dollar amount").required("Amount is required").positive("Amount must be a positive"),
     cardNumber: Yup.string("Enter a card number").required("Card number is required").min(19, "Enter a valid card number").max(19, "Enter a valid card number"),
     cvv: Yup.string("Enter a cvv").required("cvv is required").min(3, "Enter a valid cvv").max(3, "Enter a valid cvv"),
     exp: Yup.string("Enter a expiration").required("Expiration is required"),
     frequency: Yup.string("Enter a Frequency").required("Frequency is required"),
-});
+})
 
 class formikForm extends React.Component {
     constructor(props) {
@@ -112,7 +114,8 @@ class formikForm extends React.Component {
     }
 
     goToThank = () => {
-        this.props.history.push('/thank')
+        this.props.history.push('"/ThankYou/"')
+
     }
 
     render() {
