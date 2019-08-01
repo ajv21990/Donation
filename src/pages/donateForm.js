@@ -1,20 +1,11 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import FormControl from '@material-ui/core/FormControl'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import Select from '@material-ui/core/Select'
-import InputLabel from '@material-ui/core/InputLabel';
 import Header from '../components/header'
 import Footer from '../components/footer'
 import axios from 'axios'
 import CheckoutForm from '../components/CheckoutForm'
 import { Elements, StripeProvider } from 'react-stripe-elements'
 import Modal from '@material-ui/core/Modal'
-
-
-
-
+import FormikForm from '../components/formikForm'
 import '../stylesheets/formStyle.css'
 
 export default class ContactForm extends React.Component {
@@ -98,173 +89,13 @@ export default class ContactForm extends React.Component {
             <div className="FormPage">
                 <Header />
                 <hr />
-                <div className="DonationForm row">
-                    <div className="col-sm-3 offset-md-2 offset-sm-0">
-                        <TextField
-                            id="DonationID"
-                            fullWidth="true"
-                            label="Donation ID"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.donationID}
-                            onChange={event => this.setState({ donationID: event.target.value })}
-                        />
-                        <TextField
-                            id="FirstName"
-                            fullWidth="true"
-
-                            label="First Name"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.fName}
-                            onChange={event => this.setState({ fName: event.target.value })}
-                        />
-                        <TextField
-                            id="LastName"
-                            fullWidth="true"
-
-                            label="Last Name"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.lName}
-                            onChange={event => this.setState({ lName: event.target.value })}
-                        />
-
-                        <TextField
-                            fullWidth="true"
-                            type="email"
-                            id="Email"
-                            label="Email"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.email}
-                            onChange={event => this.setState({ email: event.target.value })}
-                        />
+                <div>
+                    <div>
+                        <FormikForm />
                     </div>
-                    <div className="col-sm-3">
-                        <TextField
-                            id="Address"
-                            fullWidth="true"
-
-                            label="Address"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.address}
-                            onChange={event => this.setState({ address: event.target.value })}
-                        />
-                        <TextField
-                            id="Apt"
-                            fullWidth="true"
-
-                            label="Apt#"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.apt}
-                            onChange={event => this.setState({ apt: event.target.value })}
-                        />
-                        <TextField
-                            id="City"
-                            fullWidth="true"
-
-                            label="City"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.city}
-                            onChange={event => this.setState({ city: event.target.value })}
-                        />
-                        <TextField
-                            id="State"
-                            fullWidth="true"
-
-                            label="State"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.state}
-                            onChange={event => this.setState({ state: event.target.value })}
-                        />
-                        <TextField
-                            id="Zip"
-                            fullWidth="true"
-
-                            label="Zip"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.zip}
-                            onChange={event => this.setState({ zip: event.target.value })}
-                        />
-                    </div>
-                    <div className="col-sm-3">
-                        <TextField
-                            id="Amount"
-                            fullWidth="true"
-
-                            label="Amount"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.amount}
-                            onChange={event => this.setState({ amount: event.target.value })}
-                        />
-                        <TextField
-                            id="CardNumber"
-                            fullWidth="true"
-
-                            label="Card#"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.cardNumber}
-                            onChange={event => this.setState({ cardNumber: event.target.value })}
-                        />
-                        <TextField
-                            id="CVV"
-                            fullWidth="true"
-
-                            label="CVV"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.cvv}
-                            onChange={event => this.setState({ cvv: event.target.value })}
-                        />
-                        <TextField
-                            id="Exp"
-                            fullWidth="true"
-
-                            label="Exp"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.exp}
-                            onChange={event => this.setState({ exp: event.target.value })}
-                        />
-                    </div>
-                </div>
-                <br />
-                <div className="BottomForm">
-                    <FormControl variant="outlined">
-                        <InputLabel >
-                            Frequency
-                        </InputLabel>
-                        <Select
-                            native
-                            value={this.state.frequency}
-                            onChange={event => this.setState({ frequency: event.target.value })}
-                            input={
-                                <OutlinedInput labelWidth={500} name="age" id="frequency" />
-                            }>
-                            <option value="" />
-                            <option value={"One Time"}>One Time</option>
-                            <option value={"Monthly"}>Monthly</option>
-                            <option value={"Yearly"}>Yearly</option>
-                        </Select>
-                    </FormControl>
-                    <br />
-                    <br />
-
-                    <Button variant="contained" color="primary" onClick={this.Submit} >SUBMIT</Button>
                     <br />
                 </div>
                 <hr />
-
-
-
                 <Footer />
                 <Modal
                     aria-labelledby="StripeModal"

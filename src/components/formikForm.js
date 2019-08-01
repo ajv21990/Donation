@@ -2,7 +2,6 @@ import React from "react";
 import { Formik } from "formik";
 import { Form } from '../components/formDonate'
 import * as Yup from "yup";
-import { State } from "xstate";
 
 const validationSchema = Yup.object({
     donationID: Yup.number("Enter a donation ID").required("Donation ID is required"),
@@ -20,9 +19,7 @@ const validationSchema = Yup.object({
     cardNumber: Yup.string("Enter a card number").required("Card number is required").min(19, "Enter a valid card number").max(19, "Enter a valid card number"),
     cvv: Yup.string("Enter a cvv").required("cvv is required").min(3, "Enter a valid cvv").max(3, "Enter a valid cvv"),
     exp: Yup.string("Enter a expiration").required("Expiration is required"),
-    // frequency: Yup.string("Enter a city").required("City is required"),
-
-
+    frequency: Yup.string("Enter a Frequency").required("Frequency is required"),
 });
 
 class formikForm extends React.Component {
@@ -39,11 +36,11 @@ class formikForm extends React.Component {
             state: "",
             zip: '',
             amount: "",
-            // frequency: "",
+            frequency: "",
             cardNumber: '',
             cvv: '',
             exp: "",
-            // showModal: false
+            showModal: false
         }
     }
     submitValues = formInput => {
@@ -59,7 +56,7 @@ class formikForm extends React.Component {
             state: formInput.state,
             zip: formInput.zip,
             amount: formInput.amount,
-            // frequency: "",
+            frequency: formInput.frequency,
             cardNumber: formInput.cardNumber,
             cvv: formInput.cvv,
             exp: formInput.exp,
@@ -72,7 +69,6 @@ class formikForm extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                    <h1> Formik Form</h1>
                     <Formik
                         render={props => <Form {...props} />}
                         initialValues={this.state}

@@ -204,7 +204,7 @@ export const Form = props => {
                         fullWidth
                         onChange={change.bind(null, "frequency")}
                         input={
-                            <OutlinedInput labelWidth={500} name="age" id="frequency" />
+                            <OutlinedInput labelWidth={500} name="frequency" id="frequency" />
                         }>
                         <option value="" />
                         <option value={"One Time"}>One Time</option>
