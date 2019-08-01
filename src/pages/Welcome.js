@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button'
 
 import '../stylesheets/welcomeStyle.css'
 import { Spring } from 'react-spring/renderprops'
-import MKSVG from '../assets/MK-logo.svg'
 
 
 class Welcome extends React.Component {
