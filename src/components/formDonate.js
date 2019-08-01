@@ -5,6 +5,8 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 
 
@@ -29,18 +31,20 @@ export const Form = props => {
             <div className="DonationForm">
                 <div className=" row">
                     <div className="col-sm-4 offset-sm-0">
-                        <TextField
-                            id="donationID"
-                            name="donationID"
-                            helperText={touched.donationID ? errors.donationID : ""}
-                            error={touched.donationID && Boolean(errors.donationID)}
-                            fullWidth
-                            label="Donation ID"
-                            margin="normal"
-                            variant="outlined"
-                            value={donationID}
-                            onChange={change.bind(null, "donationID")}
-                        />
+                        <Tooltip title="Input a donation ID" placement="top">
+                            <TextField
+                                id="donationID"
+                                name="donationID"
+                                helperText={touched.donationID ? errors.donationID : ""}
+                                error={touched.donationID && Boolean(errors.donationID)}
+                                fullWidth
+                                label="Donation ID"
+                                margin="normal"
+                                variant="outlined"
+                                value={donationID}
+                                onChange={change.bind(null, "donationID")}
+                            />
+                        </Tooltip>
                         <TextField
                             id="fName"
                             name="fName"
@@ -141,18 +145,20 @@ export const Form = props => {
                         />
                     </div>
                     <div className="col-sm-4">
-                        <TextField
-                            id="amount"
-                            name="amount"
-                            helperText={touched.amount ? errors.amount : ""}
-                            error={touched.amount && Boolean(errors.amount)}
-                            fullWidth
-                            label="Amount"
-                            margin="normal"
-                            variant="outlined"
-                            value={amount}
-                            onChange={change.bind(null, "amount")}
-                        />
+                        <Tooltip title="Input how much you are donating" placement="top">
+                            <TextField
+                                id="amount"
+                                name="amount"
+                                helperText={touched.amount ? errors.amount : ""}
+                                error={touched.amount && Boolean(errors.amount)}
+                                fullWidth
+                                label="Amount"
+                                margin="normal"
+                                variant="outlined"
+                                value={amount}
+                                onChange={change.bind(null, "amount")}
+                            />
+                        </Tooltip>
                         <TextField
                             id="cardNumber"
                             name="cardNumber"
@@ -177,18 +183,20 @@ export const Form = props => {
                             value={cvv}
                             onChange={change.bind(null, "cvv")}
                         />
-                        <TextField
-                            id="exp"
-                            name="exp"
-                            helperText={touched.exp ? errors.exp : ""}
-                            error={touched.exp && Boolean(errors.exp)}
-                            fullWidth
-                            label="Exp"
-                            margin="normal"
-                            variant="outlined"
-                            value={exp}
-                            onChange={change.bind(null, "exp")}
-                        />
+                        <Tooltip title="mm/yy" placement="bottom">
+                            <TextField
+                                id="exp"
+                                name="exp"
+                                helperText={touched.exp ? errors.exp : ""}
+                                error={touched.exp && Boolean(errors.exp)}
+                                fullWidth
+                                label="Exp"
+                                margin="normal"
+                                variant="outlined"
+                                value={exp}
+                                onChange={change.bind(null, "exp")}
+                            />
+                        </Tooltip>
                     </div>
                 </div >
                 <br />
