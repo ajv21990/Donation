@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { navigate } from "gatsby"
+import axios from "axios";
+
 
 
 class CheckoutForm extends Component {
@@ -18,9 +20,8 @@ class CheckoutForm extends Component {
                 body: token.id
             });
             if (response.ok) {
-                const email = this.props.email
-                console.log("Form email", email)
-                navigate("/ThankYou/")
+                this.sendEmailFn()
+
             }
             if (!response.ok) alert("Did not charge try again")
         }
@@ -28,6 +29,23 @@ class CheckoutForm extends Component {
             navigate("/404.html")
 
         }
+    }
+
+    sendEmailFn = async () => {
+        try {
+            const email = this.props.email
+            let emailSent = {
+                "email": email
+            }
+            emailSent = JSON.stringify(emailSent)
+
+            await axios.post('https://fpjrm7idv2.execute-api.us-west-2.amazonaws.com/dev/donate-ses', emailSent)
+            console.log("success")
+            navigate("/ThankYou/")
+        } catch (err) {
+            alert(err)
+        }
+
     }
 
 
