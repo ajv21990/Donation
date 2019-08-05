@@ -140,7 +140,7 @@ class formikForm extends React.Component {
                             <div className="stripeModal">
                                 <h2>Your Donation Is Appreciated</h2>
                                 <Elements>
-                                    <CheckoutForm />
+                                    <CheckoutForm email={this.state.email} />
                                 </Elements>
                             </div>
                         </StripeProvider>

@@ -18,18 +18,16 @@ class CheckoutForm extends Component {
                 body: token.id
             });
             if (response.ok) {
+                const email = this.props.email
+                console.log("Form email", email)
                 navigate("/ThankYou/")
             }
             if (!response.ok) alert("Did not charge try again")
         }
         catch{
             navigate("/404.html")
-           
+
         }
-
-
-
-
     }
 
 

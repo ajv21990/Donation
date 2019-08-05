@@ -183,7 +183,7 @@ export const Form = props => {
                             value={cvv}
                             onChange={change.bind(null, "cvv")}
                         />
-                        <Tooltip title="mm/yy" placement="bottom">
+                        <Tooltip title="Format mm/yy" placement="bottom">
                             <TextField
                                 id="exp"
                                 name="exp"
