@@ -51,6 +51,8 @@ class formikForm extends React.Component {
     }
     submitValues = formInput => {
         const form = formInput
+        const amountFloat = parseFloat(formInput.amount).toFixed(2)
+        console.log("float amount: ", amountFloat)
         this.setState({
             donationID: form.donationID,
             fName: formInput.fName,
@@ -61,7 +63,7 @@ class formikForm extends React.Component {
             city: formInput.city,
             state: formInput.state,
             zip: formInput.zip,
-            amount: formInput.amount,
+            amount: amountFloat,
             frequency: formInput.frequency,
             cardNumber: formInput.cardNumber,
             cvv: formInput.cvv,
@@ -69,6 +71,7 @@ class formikForm extends React.Component {
         })
 
         const donor = {
+            donationId: this.state.donationID,
             firstName: this.state.fName,
             lastName: this.state.lName,
             email: this.state.email,
@@ -83,12 +86,15 @@ class formikForm extends React.Component {
             cvv: this.state.cvv,
             exp: this.state.exp
         }
+
+        console.log("Donor info: ", donor)
         axios.post(`http://localhost:8080/vapps/DonationsPage`, donor)
             .then(res => {
                 console.log('Axios response', res)
                 if (res.status === 200) {
                     //Do Stripe API Call
-                    this.chargeStripe(donor.amount)
+                    // this.chargeStripe(donor.amount)
+                    console.log("Moqui returned 200")
                 }
 
             })
@@ -110,13 +116,8 @@ class formikForm extends React.Component {
         this.setState({
             showModal: false
         })
-        this.goToThank()
     }
 
-    goToThank = () => {
-        this.props.history.push('"/ThankYou/"')
-
-    }
 
     render() {
         return (
