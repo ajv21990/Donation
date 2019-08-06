@@ -33,9 +33,12 @@ class CheckoutForm extends Component {
 
     sendEmailFn = async () => {
         try {
+            const name = `${this.props.fName} ${this.props.lName}`
+            console.log("Email shopuld use this name: ", name)
             const email = this.props.email
             let emailSent = {
-                "email": email
+                "email": email,
+                "name": name
             }
             emailSent = JSON.stringify(emailSent)
 
