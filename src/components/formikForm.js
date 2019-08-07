@@ -10,17 +10,17 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object({
     donationID: Yup.number("Enter a donation ID").required("Donation ID is required"),
-    fName: Yup.string("Enter a first name").required("First name is required"),
-    lName: Yup.string("Enter a last name").required("Last name is required"),
+    fName: Yup.string("Enter a first name").required("First name is required").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
+    lName: Yup.string("Enter a last name").required("Last name is required").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
     email: Yup.string("Enter your email")
         .email("Enter a valid email")
         .required("Email is required"),
     address: Yup.string("Enter your address")
         .required("Address is required"),
     apt: Yup.string("Enter your apt#").notRequired(),
-    city: Yup.string("Enter a city").required("City is required").max(30, "Enter a valid city"),
+    city: Yup.string("Enter a city").required("City is required").max(30, "Enter a valid city").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
     state: Yup.string("Enter a state").required("State is required").length(2, "Enter state abbrev").uppercase(),
-    zip: Yup.string("Enter a zip code").required("Zip code is required").max(10, "Enter a valid zip code").min(5, "Enter a valid zip code"),
+    zip: Yup.string("Enter a zip code").required("Zip code is required").max(10, "Please enter a valid zip code.").min(5, "Please enter a valid zip code.").matches(/\d{5}/, 'Please enter a valid zip code.'),
     amount: Yup.number("Enter a dollar amount").required("Amount is required").positive("Amount must be a positive"),
     cardNumber: Yup.string("Enter a card number").required("Card number is required").min(19, "Enter a valid card number").max(19, "Enter a valid card number"),
     cvv: Yup.string("Enter a cvv").required("cvv is required").min(3, "Enter a valid cvv").max(3, "Enter a valid cvv"),
@@ -52,7 +52,6 @@ class formikForm extends React.Component {
     submitValues = formInput => {
         const form = formInput
         const amountFloat = parseFloat(formInput.amount).toFixed(2)
-        console.log("float amount: ", amountFloat)
         this.setState({
             donationID: form.donationID,
             fName: formInput.fName,
@@ -69,26 +68,32 @@ class formikForm extends React.Component {
             cvv: formInput.cvv,
             exp: formInput.exp,
         })
-
+        console.log("current state", this.state)
         const donor = {
-            donationId: this.state.donationID,
+            // donationId: this.state.donationID,
             firstName: this.state.fName,
             lastName: this.state.lName,
-            email: this.state.email,
-            address: this.state.address,
-            apt: this.state.apt,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip,
-            amount: this.state.amount,
-            frequency: this.state.frequency,
-            cardNumber: this.state.cardNumber,
-            cvv: this.state.cvv,
-            exp: this.state.exp
+            // email: this.state.email,
+            // address: this.state.address,
+            // apt: this.state.apt,
+            // city: this.state.city,
+            // state: this.state.state,
+            // zip: this.state.zip,
+            // amount: this.state.amount,
+            // frequency: this.state.frequency,
+            // cardNumber: this.state.cardNumber,
+            // cvv: this.state.cvv,
+            // exp: this.state.exp
         }
 
         console.log("Donor info: ", donor)
-        axios.post(`http://localhost:8080/vapps/DonationsPage`, donor)
+
+        axios.post(`http://localhost:8080/apps/DonationsPage/DonationsForm/createDonation`, donor
+            , {
+                withCredentials: true
+            }
+        )
+
             .then(res => {
                 console.log('Axios response', res)
                 if (res.status === 200) {
