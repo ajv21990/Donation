@@ -9,22 +9,21 @@ import * as Yup from "yup";
 
 
 const validationSchema = Yup.object({
-    donationID: Yup.number("Enter a donation ID").required("Donation ID is required"),
-    fName: Yup.string("Enter a first name").required("First name is required"),
-    lName: Yup.string("Enter a last name").required("Last name is required"),
+    fName: Yup.string("Enter a first name").required("First name is required").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
+    lName: Yup.string("Enter a last name").required("Last name is required").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
     email: Yup.string("Enter your email")
         .email("Enter a valid email")
         .required("Email is required"),
     address: Yup.string("Enter your address")
         .required("Address is required"),
     apt: Yup.string("Enter your apt#").notRequired(),
-    city: Yup.string("Enter a city").required("City is required").max(30, "Enter a valid city"),
+    city: Yup.string("Enter a city").required("City is required").max(30, "Enter a valid city").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
     state: Yup.string("Enter a state").required("State is required").length(2, "Enter state abbrev").uppercase(),
-    zip: Yup.string("Enter a zip code").required("Zip code is required").max(10, "Enter a valid zip code").min(5, "Enter a valid zip code"),
+    zip: Yup.string("Enter a zip code").required("Zip code is required").max(10, "Please enter a valid zip code.").min(5, "Please enter a valid zip code.").matches(/\d{5}/, 'Please enter a valid zip code.'),
     amount: Yup.number("Enter a dollar amount").required("Amount is required").positive("Amount must be a positive"),
-    cardNumber: Yup.string("Enter a card number").required("Card number is required").min(19, "Enter a valid card number").max(19, "Enter a valid card number"),
+    cardNumber: Yup.string("Enter a card number").required("Card number is required").min(16, "Enter a valid card number").max(16, "Enter a valid card number"),
     cvv: Yup.string("Enter a cvv").required("cvv is required").min(3, "Enter a valid cvv").max(3, "Enter a valid cvv"),
-    exp: Yup.string("Enter a expiration").required("Expiration is required"),
+    exp: Yup.string("Enter a expiration").required("Expiration is required").max(7, "Enter a valid expiration"),
     frequency: Yup.string("Enter a Frequency").required("Frequency is required"),
 })
 
@@ -32,7 +31,6 @@ class formikForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            donationID: '',
             fName: "",
             lName: "",
             email: "",
@@ -50,9 +48,8 @@ class formikForm extends React.Component {
         }
     }
     submitValues = formInput => {
-        const form = formInput
+        const amountFloat = parseFloat(formInput.amount).toFixed(2)
         this.setState({
-            donationID: form.donationID,
             fName: formInput.fName,
             lName: formInput.lName,
             email: formInput.email,
@@ -61,29 +58,42 @@ class formikForm extends React.Component {
             city: formInput.city,
             state: formInput.state,
             zip: formInput.zip,
-            amount: formInput.amount,
+            amount: amountFloat,
             frequency: formInput.frequency,
             cardNumber: formInput.cardNumber,
             cvv: formInput.cvv,
             exp: formInput.exp,
         })
-
+        console.log("current state", this.state)
         const donor = {
             firstName: this.state.fName,
             lastName: this.state.lName,
             email: this.state.email,
-            address: this.state.address,
-            apt: this.state.apt,
+            address1: this.state.address,
+            unitNumber: this.state.apt,
             city: this.state.city,
             state: this.state.state,
-            zip: this.state.zip,
+            postalCode: this.state.zip,
             amount: this.state.amount,
             frequency: this.state.frequency,
             cardNumber: this.state.cardNumber,
-            cvv: this.state.cvv,
-            exp: this.state.exp
+            cardSecurityCode: this.state.cvv,
+            expireDate: this.state.exp
         }
-        axios.post(`http://localhost:8080/vapps/DonationsPage`, donor)
+
+        // check here to see what information is being passed in to your axios call
+        console.log("Donor info: ", donor)
+
+        // Make sure you set your url to include "apps" instead of "vapps".
+        axios.post(`http://localhost:8080/apps/DonationsPage/DonationsForm/createDonation`, donor,
+
+            // For this project include withCredentials:true in the header of your axios call in order for the
+            // call to bypass the login page
+            {
+                withCredentials: true
+            }
+        )
+
             .then(res => {
                 console.log('Axios response', res)
                 if (res.status === 200) {
@@ -110,13 +120,8 @@ class formikForm extends React.Component {
         this.setState({
             showModal: false
         })
-        this.goToThank()
     }
 
-    goToThank = () => {
-        this.props.history.push('"/ThankYou/"')
-
-    }
 
     render() {
         return (
@@ -140,7 +145,9 @@ class formikForm extends React.Component {
                             <div className="stripeModal">
                                 <h2>Your Donation Is Appreciated</h2>
                                 <Elements>
-                                    <CheckoutForm />
+                                    <CheckoutForm email={this.state.email}
+                                        fName={this.state.fName}
+                                        lName={this.state.lName} />
                                 </Elements>
                             </div>
                         </StripeProvider>

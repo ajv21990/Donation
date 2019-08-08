@@ -12,7 +12,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 export const Form = props => {
     const {
-        values: { donationID, fName, lName, email, address, apt, city, state, zip, amount, frequency, cardNumber, cvv, exp, },
+        values: { fName, lName, email, address, apt, city, state, zip, amount, frequency, cardNumber, cvv, exp, },
         errors,
         touched,
         handleSubmit,
@@ -31,20 +31,6 @@ export const Form = props => {
             <div className="DonationForm">
                 <div className=" row">
                     <div className="col-sm-4 offset-sm-0">
-                        <Tooltip title="Input a donation ID" placement="top">
-                            <TextField
-                                id="donationID"
-                                name="donationID"
-                                helperText={touched.donationID ? errors.donationID : ""}
-                                error={touched.donationID && Boolean(errors.donationID)}
-                                fullWidth
-                                label="Donation ID"
-                                margin="normal"
-                                variant="outlined"
-                                value={donationID}
-                                onChange={change.bind(null, "donationID")}
-                            />
-                        </Tooltip>
                         <TextField
                             id="fName"
                             name="fName"
@@ -80,6 +66,18 @@ export const Form = props => {
                             variant="outlined"
                             value={email}
                             onChange={change.bind(null, "email")}
+                        />
+                        <TextField
+                            id="zip"
+                            name="zip"
+                            helperText={touched.zip ? errors.zip : ""}
+                            error={touched.zip && Boolean(errors.zip)}
+                            fullWidth
+                            label="Zip"
+                            margin="normal"
+                            variant="outlined"
+                            value={zip}
+                            onChange={change.bind(null, "zip")}
                         />
                     </div>
                     <div className="col-sm-4">
@@ -131,18 +129,6 @@ export const Form = props => {
                             value={state}
                             onChange={change.bind(null, "state")}
                         />
-                        <TextField
-                            id="zip"
-                            name="zip"
-                            helperText={touched.zip ? errors.zip : ""}
-                            error={touched.zip && Boolean(errors.zip)}
-                            fullWidth
-                            label="Zip"
-                            margin="normal"
-                            variant="outlined"
-                            value={zip}
-                            onChange={change.bind(null, "zip")}
-                        />
                     </div>
                     <div className="col-sm-4">
                         <Tooltip title="Input how much you are donating" placement="top">
@@ -183,7 +169,7 @@ export const Form = props => {
                             value={cvv}
                             onChange={change.bind(null, "cvv")}
                         />
-                        <Tooltip title="mm/yy" placement="bottom">
+                        <Tooltip title="Format mm/yyyy" placement="bottom">
                             <TextField
                                 id="exp"
                                 name="exp"
