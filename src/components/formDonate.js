@@ -12,7 +12,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 export const Form = props => {
     const {
-        values: { donationID, fName, lName, email, address, apt, city, state, zip, amount, frequency, cardNumber, cvv, exp, },
+        values: { fName, lName, email, address, apt, city, state, zip, amount, frequency, cardNumber, cvv, exp, },
         errors,
         touched,
         handleSubmit,

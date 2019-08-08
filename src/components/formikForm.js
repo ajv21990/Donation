@@ -9,7 +9,6 @@ import * as Yup from "yup";
 
 
 const validationSchema = Yup.object({
-    donationID: Yup.number("Enter a donation ID").required("Donation ID is required"),
     fName: Yup.string("Enter a first name").required("First name is required").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
     lName: Yup.string("Enter a last name").required("Last name is required").matches(/^[- A-Za-z']+$/, 'Please enter a valid first name.'),
     email: Yup.string("Enter your email")
@@ -32,7 +31,6 @@ class formikForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            donationID: '',
             fName: "",
             lName: "",
             email: "",
@@ -50,10 +48,8 @@ class formikForm extends React.Component {
         }
     }
     submitValues = formInput => {
-        const form = formInput
         const amountFloat = parseFloat(formInput.amount).toFixed(2)
         this.setState({
-            donationID: form.donationID,
             fName: formInput.fName,
             lName: formInput.lName,
             email: formInput.email,
@@ -102,8 +98,7 @@ class formikForm extends React.Component {
                 console.log('Axios response', res)
                 if (res.status === 200) {
                     //Do Stripe API Call
-                    // this.chargeStripe(donor.amount)
-                    console.log("Moqui returned 200")
+                    this.chargeStripe(donor.amount)
                 }
 
             })
